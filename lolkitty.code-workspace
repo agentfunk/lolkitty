@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"reason_language_server.location": "./_opam/bin/ocamlmerlin-server",
+		"reason_language_server.mlfmt": "./_opam/bin/ocp-indent",
+		"ocaml.sandbox": {
+			"kind": "opam",
+			"switch": "/Users/sammerat/personal/lolkitty"
+		}
+	}
+}

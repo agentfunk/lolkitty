@@ -1,0 +1,3 @@
+(executable
+ (libraries lib re yojson opium logs.fmt base64 sexplib0)
+ (name main))
