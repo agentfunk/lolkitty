@@ -24,8 +24,8 @@ let get_response param_str =
   let url = resolve_url cmd in
   Response.redirect_to @@ Printf.sprintf "%s\n" url
 
-let print_param =
-  get "/:params" (fun req ->
+let redirect_command =
+  get "/go/:params" (fun req ->
       let params = Router.param req "params" in
       Lwt.return
       @@
@@ -34,7 +34,10 @@ let print_param =
           Response.of_plain_text @@ Printf.sprintf "Invalid param [%s]" params
       | Some response -> response)
 
+let list_commands =
+  get "/list" (fun _ -> Lwt.return @@ Response.of_plain_text command_help_str)
+
 let _ =
   Logs.set_reporter (Logs_fmt.reporter ());
   Logs.set_level (Some Logs.Debug);
-  App.empty |> print_param |> App.run_command
+  App.empty |> redirect_command |> list_commands |> App.run_command
